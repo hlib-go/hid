@@ -12,7 +12,9 @@ import (
 var g *snowflake.Node
 
 func init() {
-	g, _ = snowflake.NewNode(getLocalIP() % 31)
+	n := getLocalIP()
+	rand.Seed(n)
+	g, _ = snowflake.NewNode(n % 31)
 }
 
 //ID SnowFlake 生成长度20位的数字编号
